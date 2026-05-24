@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="detail">
+  <a class="back-link" href="{{ url_for('index') }}">一覧に戻る</a>
+  <div class="meta">
+    <span>{{ content.category_name }}</span>
+    <time datetime="{{ content.published_at }}">{{ content.published_at.strftime("%Y-%m-%d") }}</time>
+  </div>
+  <h1>{{ content.title }}</h1>
+  <p class="lead">{{ content.summary }}</p>
+  <div class="body">{{ content.body | replace('\n', '<br>') | safe }}</div>
+</article>
+{% endblock %}

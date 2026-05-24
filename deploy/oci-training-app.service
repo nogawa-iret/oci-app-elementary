@@ -1,0 +1,15 @@
+[Unit]
+Description=OCI Training Public Site
+After=network.target
+
+[Service]
+User=opc
+Group=opc
+WorkingDirectory=/opt/oci-training-app
+EnvironmentFile=/opt/oci-training-app/.env
+ExecStart=/opt/oci-training-app/.venv/bin/gunicorn --workers 2 --bind 0.0.0.0:8000 wsgi:app
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
